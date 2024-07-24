@@ -9,12 +9,15 @@
 #form-inputs  {
     display: flex;
     justify-content: center;
+    padding-top: 1%;
 }
 
 #form-inputs input {
     margin-right: 2%;
     padding: 0.3%;
     width: 15%;
+    border-radius: 5px;
+    text-indent: 5px;
 }
 
 #button-container {
@@ -26,7 +29,7 @@
 
 #button-container button {
     width: 10%;
-    height: 3vh;
+    height: 4vh;
 }
 
 #button-container button:hover {
