@@ -1,7 +1,11 @@
 import "./ugly-thing.css";
+import {useContext} from "react";
+import {UglyThingsContext} from "../../context/uglyThingsContext";
 
 
 export default function UglyThing() {
+    const context = useContext(UglyThingsContext);
+
     return (
         <>
             <div id="ugly-thing-container">
@@ -9,8 +13,8 @@ export default function UglyThing() {
                 <h4>Description</h4>
                 <img src="#" alt="ugly thing" />
             </div>
-            <button type="submit">Delete</button>
-            <button type="submit">Edit</button>
+            <button type="submit" onClick={() => context.delete(context.uglyThing._id)}>Delete</button>
+            <button type="submit" onClick={() => context.edit(context.uglyThing._id)}>Edit</button>
         </>
     )
 }
