@@ -28,3 +28,7 @@
     width: 10%;
     height: 3vh;
 }
+
+#button-container button:hover {
+    cursor: pointer;
+}
