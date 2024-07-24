@@ -1,0 +1,30 @@
+#form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #41b8f0;
+    border: 2px solid black;
+}
+
+#form-inputs  {
+    display: flex;
+    justify-content: center;
+}
+
+#form-inputs input {
+    margin-right: 2%;
+    padding: 0.3%;
+    width: 15%;
+}
+
+#button-container {
+   display: flex;
+   justify-content: center;
+   padding-top: 2%;
+   padding-bottom: 2%;
+}
+
+#button-container button {
+    width: 10%;
+    height: 3vh;
+}
