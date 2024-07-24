@@ -5,7 +5,7 @@ import { UglyThingsContext } from "../../context/uglyThingsContext";
 
 export default function Form(props) {
     const context = useContext(UglyThingsContext);
-    console.log('Context: ', context)
+    
     return (
         <div id="form-container">
             <form id="form-inputs" name="ugly-things-form">

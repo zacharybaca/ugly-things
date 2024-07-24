@@ -12,7 +12,7 @@ function UglyThingsContextProvider(props) {
         imgUrl: ""
     })
 
-    const [uglyThings, setUglyThings] = useState();
+    const [uglyThings, setUglyThings] = useState([]);
 
     function handleChange(e) {
         const {name, value} = e.target;
@@ -33,11 +33,7 @@ function UglyThingsContextProvider(props) {
                 "Content-type": "application/json"
             }
         })
-        .then(res => res.json())
-        .then(json => setUglyThings(prevState => ({
-            ...prevState,
-            json
-        })));
+        .then(res => console.log(res.status));
     }
 
     // Function to Delete Ugly Thing
@@ -66,8 +62,7 @@ function UglyThingsContextProvider(props) {
         const getUglyThings = async () => {
             const data = await fetch("https://api.vschool.io/zacharybaca/thing");
             const json = await data.json();
-            setUglyThings(json);
-            console.log('Ugly Things: ', uglyThings)
+            setUglyThings(json)
         }
         getUglyThings();
     }, [uglyThings])
