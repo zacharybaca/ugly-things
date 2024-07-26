@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
@@ -30,6 +31,14 @@ function UglyThingsContextProvider(props) {
         }))
     }
 
+    function handleChangeUpdatedForm(e) {
+        const {name, value} = e.target;
+        setUpdateThing(prevState => ({
+            ...prevState,
+            [name]: value
+        }))
+    }
+
     // Function to Add Ugly Thing
     function addItem(e) {
         e.preventDefault();
@@ -41,19 +50,32 @@ function UglyThingsContextProvider(props) {
                 "Content-type": "application/json"
             }
         })
-        .then(res => console.log(res.status));
+       .then(res => res.json())
+       .then(data => setUglyThings(prevState => [...prevState, data]))
+       .catch(error => {
+        console.error("Error Adding Item: ", error);
+       });
+        
     }
 
     // Function to Delete Ugly Thing
     function deleteItem(id) {
+
         fetch(`https://api.vschool.io/zacharybaca/thing/${id}`, {
             method: "DELETE"
         })
-        .then(res => console.log(res.status))
+        .then(res => res.json())
+        .then(() => {
+            setUglyThings(prevState => prevState.filter(item => item.id !== id));
+        })
+        .catch(error => {
+            console.error("Error Deleting Item: ", error);
+        });
     }
 
     // Function to Edit Ugly Thing
     function editItem(id) {
+        console.log('Item ID: ', id)
         const foundItem = uglyThings.find((item) => item._id === id);
 
         if (foundItem) {
@@ -67,19 +89,33 @@ function UglyThingsContextProvider(props) {
         setShow(true);
     }
 
-    function updateItem() {
-
+    function updateItem(id) {
+        
+        fetch(`https://api.vschool.io/zacharybaca/thing/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updateThing)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setUglyThings(prevState => prevState.map(item => item._id === id ? data : item));
+        })
+        .catch(error => {
+            console.error("Error Updating Item: ", error);
+        });
     }
 
     useEffect(() => {
         const getUglyThings = async () => {
-            const data = await fetch("https://api.vschool.io/zacharybaca/thing");
-            const json = await data.json();
+            const data = await fetch("https://api.vschool.io/zacharybaca/thing")
+            const json = await data.json()
             setUglyThings(json)
         }
         getUglyThings();
         
-    }, [uglyThings])
+    }, [])
 
     
     return (
@@ -93,7 +129,8 @@ function UglyThingsContextProvider(props) {
             update: updateItem,
             show: show,
             setShow: setShow,
-            handleChange: handleChange
+            handleChange: handleChange,
+            handleChangeUpdate: handleChangeUpdatedForm
         }}>
             {props.children}
         </UglyThingsContext.Provider>

@@ -2,6 +2,7 @@
 import "./ugly-thing.css";
 import {UglyThingsContext} from "../../context/uglyThingsContext";
 import {useContext} from "react";
+import UpdateForm from "../UpdateForm/UpdateForm";
 
 
 
@@ -19,6 +20,7 @@ export default function UglyThing(props) {
             
             <button type="submit" id="delete-button" onClick={() => context.delete(props.item._id)}>Delete</button>
             <button type="submit" id="edit-button" onClick={() => context.edit(props.item._id)}>Edit</button>
+            <UpdateForm item={props.item}/>
         </div>
     )
 }
