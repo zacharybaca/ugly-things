@@ -12,7 +12,15 @@ function UglyThingsContextProvider(props) {
         imgUrl: ""
     })
 
+    const [updateThing, setUpdateThing] = useState({
+        title: "",
+        description: "",
+        imgUrl: ""
+    })
+
     const [uglyThings, setUglyThings] = useState([]);
+
+    const [show, setShow] = useState(false);
 
     function handleChange(e) {
         const {name, value} = e.target;
@@ -49,13 +57,18 @@ function UglyThingsContextProvider(props) {
         const foundItem = uglyThings.find((item) => item._id === id);
 
         if (foundItem) {
-            setUglyThing(prevState => ({
-                ...prevState,
+            setUpdateThing({
                 title: foundItem.title,
                 description: foundItem.description,
                 imgUrl: foundItem.imgUrl
-            }))
+            })
         }
+
+        setShow(true);
+    }
+
+    function updateItem() {
+
     }
 
     useEffect(() => {
@@ -71,9 +84,13 @@ function UglyThingsContextProvider(props) {
         <UglyThingsContext.Provider value={{
             uglyThing: uglyThing,
             uglyThings: uglyThings,
+            updatedThing: updateThing,
             delete: deleteItem,
             edit: editItem,
             add: addItem,
+            update: updateItem,
+            show: show,
+            setShow: setShow,
             handleChange: handleChange
         }}>
             {props.children}

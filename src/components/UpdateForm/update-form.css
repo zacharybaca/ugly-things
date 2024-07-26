@@ -1,0 +1,21 @@
+#update-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #41b8f0;
+    border: 2px solid black;
+}
+
+#update-form-inputs  {
+    display: flex;
+    justify-content: center;
+    padding-top: 1%;
+}
+
+#update-form-inputs input {
+    margin-right: 2%;
+    padding: 0.3%;
+    width: 15%;
+    border-radius: 5px;
+    text-indent: 5px;
+}
