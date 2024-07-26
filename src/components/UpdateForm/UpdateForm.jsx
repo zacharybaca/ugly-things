@@ -19,7 +19,7 @@ export default function UpdateForm(props) {
         <>
             <Modal show={context.show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>{`Update ${context.updatedThing.title}`}</Modal.Title>
+                <Modal.Title>{`Update For Item ID: ${props.id}`}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 <div id="update-form-container">
@@ -34,7 +34,7 @@ export default function UpdateForm(props) {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={() => context.update(props.item._id)}>
+                <Button variant="primary" onClick={() => context.update(props.id)}>
                     Update
                 </Button>
                 </Modal.Footer>
