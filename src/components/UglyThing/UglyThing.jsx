@@ -7,6 +7,7 @@ import {useContext} from "react";
 
 export default function UglyThing(props) {
     const context = useContext(UglyThingsContext);
+    
 
     return (
         <div id="ugly-thing-main-container">
@@ -16,8 +17,8 @@ export default function UglyThing(props) {
                 <img src={props.item.imgUrl} id="ugly-thing-img" alt="ugly thing" />
             </div>
             
-            <button type="submit" id="delete-button" onClick={() => context.delete(context.uglyThing._id)}>Delete</button>
-            <button type="submit" id="edit-button" onClick={() => context.edit(context.uglyThing._id)}>Edit</button>
+            <button type="submit" id="delete-button" onClick={() => context.delete(props.item._id)}>Delete</button>
+            <button type="submit" id="edit-button" onClick={() => context.edit(props.item._id)}>Edit</button>
         </div>
     )
 }

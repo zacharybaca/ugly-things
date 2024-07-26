@@ -18,11 +18,11 @@ export default function UpdateForm() {
         <>
             <Modal show={context.show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>{`Update ${context.updatedThing.title}`}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <div id="form-container">
-                    <form id="form-inputs" name="ugly-things-form">
+                <div id="update-form-container">
+                    <form id="update-form-inputs" name="ugly-things-form">
                         <input type="text" name="title" id="title-input" placeholder="Title" value={context.updatedThing.title} onChange={context.handleChange} required={true} />
                         <input type="text" name="description" id="description-input" placeholder="Description" value={context.updatedThing.description} onChange={context.handleChange} required={true} />
                         <input type="text" name="imgUrl" id="image-url-input" placeholder="Image URL" value={context.updatedThing.imgUrl} onChange={context.handleChange} required={true} />

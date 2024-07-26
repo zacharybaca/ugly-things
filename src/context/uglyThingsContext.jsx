@@ -78,8 +78,10 @@ function UglyThingsContextProvider(props) {
             setUglyThings(json)
         }
         getUglyThings();
+        
     }, [uglyThings])
 
+    
     return (
         <UglyThingsContext.Provider value={{
             uglyThing: uglyThing,
