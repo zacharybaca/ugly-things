@@ -8,7 +8,7 @@ export default function UglyThingsList() {
 
     return (
         <div id="ugly-things-list-container">
-            <h1>List of Things Considered Ugly</h1>
+            <h1 id="main-heading">List of Things Considered Ugly</h1>
             <ul id="list-items-container">
                     {context.uglyThings.map((item) => <li key={item._id}><UglyThing item={item}/></li>)}
             </ul>

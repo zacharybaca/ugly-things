@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Kalnia+Glaze:wght@100..700&family=Playwrite+CU:wght@100..400&display=swap');
+
+#ugly-thing-img {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    width: 200px;
+    height: 200px;
+}
+
+#ugly-thing-title {
+    padding-bottom: 10%;
+    padding-top: 10%;
+    font-family: "Edu AU VIC WA NT Hand", cursive;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+#ugly-thing-description {
+    font-family: "Edu AU VIC WA NT Hand", cursive;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+#ugly-thing-main-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 5%;
+}
+
+#ugly-thing-main-container button {
+    margin-bottom: 5%;
+}
+
+button:hover {
+    cursor: pointer;
+}

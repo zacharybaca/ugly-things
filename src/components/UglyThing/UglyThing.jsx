@@ -9,14 +9,15 @@ export default function UglyThing(props) {
     const context = useContext(UglyThingsContext);
 
     return (
-        <>
+        <div id="ugly-thing-main-container">
             <div id="ugly-thing-container">
-                <h1>{props.item.title}</h1>
-                <h4>{props.item.description}</h4>
-                {/* <img src={props.item.imgUrl} alt="ugly thing" /> */}
+                <h1 id="ugly-thing-title">{props.item.title}</h1>
+                <h4 id="ugly-thing-description">{props.item.description}</h4>
+                <img src={props.item.imgUrl} id="ugly-thing-img" alt="ugly thing" />
             </div>
-            <button type="submit" onClick={() => context.delete(context.uglyThing._id)}>Delete</button>
-            <button type="submit" onClick={() => context.edit(context.uglyThing._id)}>Edit</button>
-        </>
+            
+            <button type="submit" id="delete-button" onClick={() => context.delete(context.uglyThing._id)}>Delete</button>
+            <button type="submit" id="edit-button" onClick={() => context.edit(context.uglyThing._id)}>Edit</button>
+        </div>
     )
 }
