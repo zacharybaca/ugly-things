@@ -14,6 +14,7 @@ function UglyThingsContextProvider(props) {
     })
 
     const [updateThing, setUpdateThing] = useState({
+        _id: "",
         title: "",
         description: "",
         imgUrl: ""
@@ -75,17 +76,18 @@ function UglyThingsContextProvider(props) {
 
     // Function to Edit Ugly Thing
     function editItem(id) {
-        console.log('Item ID: ', id)
+        
         const foundItem = uglyThings.find((item) => item._id === id);
-
+        console.log('Edit Item ID: ', foundItem._id)
         if (foundItem) {
             setUpdateThing({
+                _id: id,
                 title: foundItem.title,
                 description: foundItem.description,
                 imgUrl: foundItem.imgUrl
             })
         }
-
+        console.log('Updated Thing: ', updateThing)
         setShow(true);
     }
 
@@ -100,6 +102,7 @@ function UglyThingsContextProvider(props) {
         })
         .then(res => res.json())
         .then(data => {
+            console.log('Data: ', data)
             setUglyThings(prevState => prevState.map(item => item._id === id ? data : item));
         })
         .catch(error => {
