@@ -5,6 +5,8 @@ import { UglyThingsContext } from "../../context/uglyThingsContext";
 
 export default function Form(props) {
     const context = useContext(UglyThingsContext);
+
+    const shouldDisableButton = !context.uglyThing.title || !context.uglyThing.description || !context.uglyThing.imgUrl;
     
     return (
         <div id="form-container">
@@ -15,7 +17,7 @@ export default function Form(props) {
                
             </form>
             <div id="button-container">
-                    <button type="submit" onClick={context.add}>Submit</button>
+                    <button type="submit" onClick={context.add} disabled={shouldDisableButton}>Submit</button>
                 </div>
         </div>
     )

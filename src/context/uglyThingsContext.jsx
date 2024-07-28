@@ -57,17 +57,22 @@ function UglyThingsContextProvider(props) {
         console.error("Error Adding Item: ", error);
        });
         
+       setUglyThing({
+        title: "",
+        description: "",
+        imgUrl: ""
+       })
     }
 
     // Function to Delete Ugly Thing
     function deleteItem(id) {
-
+        
         fetch(`https://api.vschool.io/zacharybaca/thing/${id}`, {
             method: "DELETE"
         })
         .then(res => res.json())
         .then(() => {
-            setUglyThings(prevState => prevState.filter(item => item.id !== id));
+            setUglyThings(prevState => prevState.filter(item => item._id !== id));
         })
         .catch(error => {
             console.error("Error Deleting Item: ", error);
@@ -104,6 +109,7 @@ function UglyThingsContextProvider(props) {
         .then(data => {
             console.log('Data: ', data)
             setUglyThings(prevState => prevState.map(item => item._id === id ? data : item));
+            setShow(false);
         })
         .catch(error => {
             console.error("Error Updating Item: ", error);

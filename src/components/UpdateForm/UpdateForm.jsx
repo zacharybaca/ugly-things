@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import "./update-form.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
